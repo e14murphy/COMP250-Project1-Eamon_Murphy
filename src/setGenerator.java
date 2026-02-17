@@ -44,14 +44,14 @@ public class setGenerator {
         File data_file;
         do
         {
-            System.out.println("Enter the name of your data file: ");
-            filename = read.nextLine();
+            //validity check
             boolean is_valid_filename = false;
             while(!is_valid_filename)
             {
+                System.out.println("Enter the name of your data file: ");
+                filename = read.nextLine();
                 is_valid_filename = true;
                 char[] char_arr_filename = filename.toUpperCase().toCharArray();
-                System.out.print(char_arr_filename);
                 for (char character : char_arr_filename) {
                     if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ_()".indexOf(character) == -1)
                     {
@@ -60,6 +60,7 @@ public class setGenerator {
                     }
                 }
             }
+            //uniquenes check
             data_file = new File("data_files/" + filename + ".csv");
             if (data_file.exists())
             {
