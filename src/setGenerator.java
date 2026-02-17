@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class setGenerator {
-
+public class setGenerator
+{
     public static void main(String[] args) throws IOException
     {
         //Taking user input to get number of sets
@@ -72,6 +72,8 @@ public class setGenerator {
         //Generating data file
         Random rand = new Random();
         FileWriter new_data_file = new FileWriter("data_files/" + filename + ".csv", true);
+        //adding line to store number of lines of data
+        new_data_file.write(num_of_sets + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "\n");
         for (int line = 0; line <= num_of_sets; line++)
         {
             int[] set_values = new int[5];
