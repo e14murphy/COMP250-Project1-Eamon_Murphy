@@ -39,13 +39,27 @@ public class setGenerator {
         //converting string number of sets to int
         int num_of_sets = Integer.parseInt(string_num_of_sets);
 
-        //Error trapping to get a new file name
+        //Error trapping to get a new and valid file name
         String filename = "";
         File data_file;
         do
         {
             System.out.println("Enter the name of your data file: ");
             filename = read.nextLine();
+            boolean is_valid_filename = false;
+            while(!is_valid_filename)
+            {
+                is_valid_filename = true;
+                char[] char_arr_filename = filename.toUpperCase().toCharArray();
+                System.out.print(char_arr_filename);
+                for (char character : char_arr_filename) {
+                    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ_()".indexOf(character) == -1)
+                    {
+                        System.out.println("Filename can only contain letters, underscores, or parenthesis.");
+                        is_valid_filename = false;
+                    }
+                }
+            }
             data_file = new File("data_files/" + filename + ".csv");
             if (data_file.exists())
             {
@@ -66,8 +80,9 @@ public class setGenerator {
             }
             String line_to_write = (set_values[0] + "," + set_values[1] + "," + set_values[2] + "," + set_values[3] + "," + set_values[4] + "," +
                     (720 - (set_values[0] + set_values[1] + set_values[2] + set_values[3] + set_values[4])));
-            new_data_file.write(line_to_write);
+            new_data_file.write(line_to_write + "\n");
         }
+        new_data_file.close();
 
     }
 
