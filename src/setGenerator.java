@@ -1,11 +1,5 @@
 //Eamon Murphy
 
-/***********************************************************************
-For this assignment you will create a program that will generate sets of 5 random positive integers
-less than 720, and a 6th integer 720 − n1 − n2 − n3 − n4 − n5 .
-You will write those sets to a file.
-************************************************************************/
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,6 +27,7 @@ public class setGenerator
                 {
                     System.out.println("Input must be an integer!");
                     is_int = false;
+                    break;
                 }
             }
         }
@@ -53,10 +48,11 @@ public class setGenerator
                 is_valid_filename = true;
                 char[] char_arr_filename = filename.toUpperCase().toCharArray();
                 for (char character : char_arr_filename) {
-                    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ_()".indexOf(character) == -1)
+                    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ_()1234567890".indexOf(character) == -1)
                     {
-                        System.out.println("Filename can only contain letters, underscores, or parenthesis.");
+                        System.out.println("Filename can only contain letters, numbers, underscores, or parenthesis.");
                         is_valid_filename = false;
+                        break;
                     }
                 }
             }
